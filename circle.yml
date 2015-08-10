@@ -22,8 +22,8 @@ deployment:
     owner: jumanjihouse
     commands:
       - docker login -e $MAIL -u $USER -p $PASS
-      - docker tag jumanjiman/downer jumanjiman/downer:${TAG1}
-      - docker tag jumanjiman/downer jumanjiman/downer:latest
+      - docker tag -f jumanjiman/downer jumanjiman/downer:${TAG1}
+      - docker tag -f jumanjiman/downer jumanjiman/downer:latest
       - docker images
       - docker push jumanjiman/downer:${TAG1}
       - docker push jumanjiman/downer:latest
