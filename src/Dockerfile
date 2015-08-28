@@ -1,4 +1,8 @@
 FROM alpine:latest
+
+# Version is tracked here and in circle.yaml
+ENV VERSION 2.1.17
+
 RUN apk upgrade --update && \
     apk add \
         ca-certificates \
@@ -7,7 +11,7 @@ RUN apk upgrade --update && \
         && \
     rm -f /var/cache/apk/* && \
     gem install -N \
-        'aws-sdk:~>2' \
+        "aws-sdk:=${VERSION}" \
         json_pure \
         memoist2 \
         && \
