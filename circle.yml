@@ -2,7 +2,7 @@
 machine:
   environment:
     # version is tracked here and src/Dockerfile.
-    VERSION: 2.2.4
+    VERSION: 2.2.5
     TAG1: ${VERSION}-$(date +%Y%m%dT%H%M)-git-${CIRCLE_SHA1:0:7}
   services:
     - docker
