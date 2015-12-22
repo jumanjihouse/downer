@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # Version is tracked here and in circle.yaml
-ENV VERSION 2.2.7
+ENV VERSION 2.2.8
 
 RUN apk upgrade --update && \
     apk add \
