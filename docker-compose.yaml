@@ -1,0 +1,20 @@
+version: '2.1'
+
+services:
+  downer:
+    image: jumanjiman/downer
+    build:
+      context: src/
+      args:
+        - VERSION
+    read_only: true
+    cap_drop:
+      - all
+    pids_limit: 20
+    cpu_shares: 512
+    mem_limit: 32M
+    shm_size: 16M
+
+  downer_tag:
+    extends: downer
+    image: jumanjiman/downer:${TAG}
