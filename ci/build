@@ -9,8 +9,4 @@ export TAG=\${VERSION}-\${BUILD_DATE}-git-\${VCS_REF}
 EOF
 . ci/vars
 
-docker build \
-  --rm \
-  --build-arg VERSION \
-  -t jumanjiman/downer \
-  src/
+docker-compose build

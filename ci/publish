@@ -3,11 +3,5 @@ set -e
 . ci/vars
 
 docker login -u $USER -p $PASS
-
-docker tag jumanjiman/downer jumanjiman/downer:${TAG}
-docker tag jumanjiman/downer jumanjiman/downer:latest
-
-docker push jumanjiman/downer:${TAG}
-docker push jumanjiman/downer:latest
-
+docker-compose push
 docker logout
