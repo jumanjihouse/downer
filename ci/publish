@@ -2,10 +2,10 @@
 set -e
 . ci/vars
 
-docker login -e $MAIL -u $USER -p $PASS
+docker login -u $USER -p $PASS
 
-docker tag -f jumanjiman/downer jumanjiman/downer:${TAG}
-docker tag -f jumanjiman/downer jumanjiman/downer:latest
+docker tag jumanjiman/downer jumanjiman/downer:${TAG}
+docker tag jumanjiman/downer jumanjiman/downer:latest
 
 docker push jumanjiman/downer:${TAG}
 docker push jumanjiman/downer:latest
