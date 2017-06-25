@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:3.6
 
 # Version is set from ci/build.
 ARG VERSION
