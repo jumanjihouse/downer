@@ -1,7 +1,7 @@
 FROM alpine:3.4
 
-# Version is tracked here and in ci/build
-ENV VERSION 2.6.10
+# Version is set from ci/build.
+ARG VERSION
 
 RUN apk upgrade --update && \
     apk add \

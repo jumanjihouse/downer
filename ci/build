@@ -11,5 +11,6 @@ EOF
 
 docker build \
   --rm \
+  --build-arg VERSION \
   -t jumanjiman/downer \
   src/
