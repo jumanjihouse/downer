@@ -1,6 +1,6 @@
 FROM alpine:3.4
 
-# Version is tracked here and in circle.yaml
+# Version is tracked here and in ci/build
 ENV VERSION 2.6.10
 
 RUN apk upgrade --update && \
