@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'aws-sdk'
+require 'aws-sdk-ec2'
 require 'memoist2'
 require 'optparse'
 require 'pp'
