@@ -1,5 +1,0 @@
-#!/bin/sh
-set -e
-
-. ci/vars
-bats test/*.bats
