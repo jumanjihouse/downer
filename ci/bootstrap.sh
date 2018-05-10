@@ -8,6 +8,7 @@ set -o pipefail
 
 main() {
   install_precommit
+  install_hooks
 }
 
 trap finish EXIT
@@ -35,6 +36,10 @@ install_precommit() {
     # Install for just this user. Does not need root.
     pip install --user -Iv --compile --no-cache-dir pre-commit
   fi
+}
+
+install_hooks() {
+  pre-commit install-hooks
 }
 
 run_precommit() {
