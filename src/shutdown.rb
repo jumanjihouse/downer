@@ -53,9 +53,13 @@ class Downer
   # @return [Types::StopInstancesResult] on success
   # @return [String] on failure
   #
+  # rubocop:disable Metrics/MethodLength
   def stop(dry_run = false)
     if dry_run || ENV['DEBUG']
-      STDERR.puts format('%i instances to shut down.', to_shutdown.count)
+      STDERR.puts format(
+        '%<count>i instances to shut down.',
+        count: to_shutdown.count,
+      )
     end
     @ec2.stop_instances(
       dry_run: dry_run,
@@ -65,6 +69,7 @@ class Downer
   rescue Aws::EC2::Errors::DryRunOperation => e
     e.message
   end
+  # rubocop:enable Metrics/MethodLength
 end
 
 options = {}
@@ -95,8 +100,8 @@ begin
   else
     pp response
   end
-rescue => e
-  STDERR.puts format('%s: %s', e.class, e.message)
+rescue StandardError => e
+  STDERR.puts format('%<class>s: %<msg>s', class: e.class, msg: e.message)
   STDERR.puts e.backtrace if ENV['DEBUG']
   exit(1)
 end

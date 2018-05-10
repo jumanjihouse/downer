@@ -8,6 +8,7 @@ set -o pipefail
 
 main() {
   install_precommit
+  install_hooks
 }
 
 trap finish EXIT
@@ -15,7 +16,7 @@ trap finish EXIT
 finish() {
   declare -ri RC=$?
   if [[ ${RC} -eq 0 ]]; then
-    echo "$0 OK" >&2
+    echo "[PASS] $0 OK" >&2
   else
     echo "[ERROR] $0" >&2
   fi
@@ -37,6 +38,10 @@ install_precommit() {
   fi
 }
 
+install_hooks() {
+  pre-commit install-hooks
+}
+
 run_precommit() {
   echo '---> run pre-commit'
 
@@ -48,36 +53,6 @@ run_precommit() {
 
   # shellcheck disable=SC2086
   pre-commit run ${PRECOMMIT_OPTS}
-}
-
-check_whitespace() {
-  local -i RC=1
-  local output
-  echo '---> whitespace'
-
-  # This command identifies whitespace errors and leftover conflict markers.
-  # It works only on committed files, so we have to warn on dirty git tree.
-  output="$(git diff-tree --check "$(git hash-object -t tree /dev/null)" HEAD)"
-  readonly output
-
-  if [[ -z "${output}" ]]; then
-    RC=0
-    echo OK
-  else
-    err Found whitespace errors. See below.
-    echo "${output}" >&2
-  fi
-
-  if is_git_dirty; then
-    echo 'Git repo has uncommitted changes; recommend to commit and re-run tests.'
-    git status
-  fi
-
-  return ${RC}
-}
-
-is_git_dirty() {
-  [[ -n "$(git diff --shortstat)" ]]
 }
 
 main
