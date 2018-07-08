@@ -1,0 +1,8 @@
+---
+
+BooleanParameter:
+  enabled: false
+
+UncommunicativeVariableName:
+  accept:
+    - ec2

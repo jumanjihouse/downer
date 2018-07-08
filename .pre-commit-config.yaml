@@ -10,7 +10,7 @@ repos:
       - id: yamllint
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v1.2.3
+    rev: v1.3.0
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
@@ -18,7 +18,7 @@ repos:
       - id: detect-private-key
 
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 1.7.0
+    rev: 1.7.1
     hooks:
       - id: shellcheck
       - id: forbid-binary
