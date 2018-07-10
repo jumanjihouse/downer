@@ -25,6 +25,7 @@ class Downer
   #
   # @return [Array<String>] Instance IDs
   #
+  # :reek:UncommunicativeVariableName { accept: r }
   memoize def all_instances
     reservations = @ec2.describe_instances.reservations
     reservations.flat_map { |r| r.instances.map(&:instance_id) }
@@ -54,6 +55,7 @@ class Downer
   # @return [String] on failure
   #
   # rubocop:disable Metrics/MethodLength
+  # :reek:UncommunicativeVariableName { accept: e }
   def stop(dry_run = false)
     if dry_run || ENV['DEBUG']
       STDERR.puts format(

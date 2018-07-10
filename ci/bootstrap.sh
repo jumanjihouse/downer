@@ -9,6 +9,8 @@ set -o pipefail
 main() {
   install_precommit
   install_hooks
+  add_upstream_git_remote
+  fetch_upstream
 }
 
 trap finish EXIT
@@ -52,7 +54,17 @@ run_precommit() {
   readonly PRECOMMIT_OPTS="${PRECOMMIT_OPTS:-$DEFAULT_PRECOMMIT_OPTS}"
 
   # shellcheck disable=SC2086
-  pre-commit run ${PRECOMMIT_OPTS}
+  pre-commit run ${PRECOMMIT_OPTS} --hook-stage manual
+}
+
+add_upstream_git_remote() {
+  if ! git remote show upstream &>/dev/null; then
+    git remote add upstream https://github.com/jumanjihouse/downer.git
+  fi
+}
+
+fetch_upstream() {
+  git fetch upstream
 }
 
 main

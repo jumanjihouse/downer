@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM alpine:3.8
 
 # Version is set from ci/build.
 ARG VERSION
@@ -7,6 +7,7 @@ RUN apk upgrade --update && \
     apk add \
         ca-certificates \
         ruby \
+        ruby-etc \
         ruby-irb \
         && \
     rm -f /var/cache/apk/* && \

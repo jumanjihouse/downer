@@ -8,9 +8,10 @@ repos:
     rev: v1.11.1
     hooks:
       - id: yamllint
+        args: ['--format', 'parsable', '--strict']
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v1.2.3
+    rev: v1.3.0
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
@@ -18,7 +19,7 @@ repos:
       - id: detect-private-key
 
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 1.7.0
+    rev: 1.7.1
     hooks:
       - id: shellcheck
       - id: forbid-binary
@@ -34,3 +35,15 @@ repos:
     hooks:
       - id: forbid-crlf
       - id: forbid-tabs
+
+  - repo: https://github.com/jorisroovers/gitlint
+    rev: v0.10.0
+    hooks:
+      - id: gitlint
+        stages: [commit-msg]
+
+      - id: gitlint
+        entry: gitlint --commits upstream/master..
+        exclude: .*
+        always_run: true
+        stages: [manual]
