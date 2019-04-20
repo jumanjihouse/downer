@@ -3,7 +3,7 @@ set -eEu
 set -o pipefail
 
 cat > ci/vars <<EOF
-declare -rx VERSION="3.0.1"
+declare -rx VERSION="1.79.0"
 
 BUILD_DATE="$(date +%Y%m%dT%H%M)"
 declare -rx BUILD_DATE

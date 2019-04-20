@@ -12,7 +12,7 @@ RUN apk upgrade --update && \
         && \
     rm -f /var/cache/apk/* && \
     gem install -N \
-        "aws-sdk:=${VERSION}" \
+        "aws-sdk-ec2:=${VERSION}" \
         json_pure \
         memoist2 \
         && \

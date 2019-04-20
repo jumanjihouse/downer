@@ -13,7 +13,7 @@ services:
       - all
     pids_limit: 20
     cpu_shares: 512
-    mem_limit: 32M
+    mem_limit: 64M
     shm_size: 16M
 
   downer_tag:
